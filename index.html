@@ -106,6 +106,8 @@ const W=400,H=640,GH=80,R=20,BX=100,PW=54;
 const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let best=store.get('fb_best',0),snd=store.get('fb_snd',true),mus=store.get('fb_mus',false),skin=store.get('fb_skin2',null),tot=store.get('fb_coins',0);
 let imgURL=store.get('fb_img',null),HS=store.get('fb_hs',100),BR=20,HB=12;
+const URLHEAD=(()=>{const m=window.FORCE_HEAD||(/[?&]head=(\d+)/.exec(location.search)||[])[1]||(/head(\d+)/i.exec(location.hash)||[])[1]||(/\/head(\d+)\/?$/i.exec(location.pathname)||[])[1];return m?+m:0})();
+if(URLHEAD>=1&&URLHEAD<=6)skin='h'+URLHEAD;
 const pv=$('pv'),pg=pv.getContext('2d'),missing={};
 const heads={},ASSET_DIR='assets/',MAX_HEADS=6,EXTS=['png','jpg','jpeg','webp','PNG','JPG','JPEG'];
 const isHead=k=>typeof k==='string'&&!!heads[k];
